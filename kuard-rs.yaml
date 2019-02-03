@@ -17,4 +17,13 @@ spec:
       containers:
       - image: gcr.io/kuar-demo/kuard-amd64:1
         name: kuard
+        resources:
+          requests:
+            cpu: 100m
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+
+
 
