@@ -6,6 +6,7 @@ metadata:
   name: kuard-rs-test-lb-service
 spec:
   type: LoadBalancer
+  externalTrafficPolicy: Local
   ports:
   - nodePort: 31372
     port: 8080
