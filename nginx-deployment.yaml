@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kubernetes.io/change-cause: "Nginx v1.15.8-alpine"
+  labels:
+    run: nginx-dp
+  name: nginx-dp
+spec:
+  replicas: 5
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: nginx-dp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: nginx-dp
+    spec:
+      containers:
+      - image: nginx:1.15.8-alpine
+        imagePullPolicy: IfNotPresent
+        name: nginx-dp
