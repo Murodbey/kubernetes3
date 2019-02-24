@@ -8,3 +8,11 @@ spec:
     name: centos
     stdin: true
     tty: true
+    volumeMounts:
+    - mountPath: "/data"
+      name: "data"
+  volumes:
+  - name: "data"
+    hostPath:
+      path: "/etc"
+
